@@ -9,7 +9,8 @@ const GameSchema = new Schema({
   summary: { type: String, required: true },
   category: [{ type: Schema.Types.ObjectId, ref: "Category" }],
   quantity: { type: Number, required: true },
-  price: { type: Number }
+  price: { type: Number },
+  sale_percent: { type: Number, default: 0 }
 });
 
 // Virtual for game's URL
