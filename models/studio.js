@@ -4,7 +4,7 @@ const Schema = mongoose.Schema;
 
 const StudioSchema = new Schema({
   name: { type: String, required: true },
-  description: { type: String }
+  about: { type: String },
 });
 
 // Virtual for book's URL
