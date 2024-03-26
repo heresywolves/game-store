@@ -4,6 +4,19 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 
+// Connect mongodb
+const mongoose = require("mongoose");
+mongoose.set("strictQuery", false);
+
+// Define the database URL to connect to.
+const mongoDB = "mongodb+srv://heresywolves:mACSNDL7e3BRZGTO@cluster0.avuxlqr.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0";
+
+// Wait for database to connect, logging an error if there is a problem
+main().catch((err) => console.log(err));
+async function main() {
+  await mongoose.connect(mongoDB);
+}
+
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 
