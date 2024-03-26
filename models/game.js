@@ -3,7 +3,7 @@ const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
 const GameSchema = new Schema({
-  title: { type: String, required: true },
+  title: { type: String, required: true, minLength: 1 },
   studio: { type: Schema.Types.ObjectId, ref: "Studio", required: true },
   release_date: { type: Date },
   summary: { type: String, required: true },
