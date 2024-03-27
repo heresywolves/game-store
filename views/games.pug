@@ -1,0 +1,12 @@
+extends layout
+
+block content
+  h1= title 
+  if games.length 
+    ul 
+      each game in games
+        li
+          img(src=`${game.img_path}`)
+          a(href=game.url) #{game.title}
+          | (#{game.studio.name})
+

@@ -98,7 +98,7 @@ async function createGames() {
       50,
       59.99,
       0,
-      "../public/images/lethal_company.jpg"
+      "/images/lethal_company.jpg"
     ),
     gameCreate(1,
       "Lethal Company",
@@ -109,7 +109,7 @@ async function createGames() {
       267,
       9.99,
       0,
-      "../public/images/armored_core4.webp"
+      "/images/armored_core4.webp"
     ),
   ]);
 }

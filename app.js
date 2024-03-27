@@ -9,7 +9,7 @@ const mongoose = require("mongoose");
 mongoose.set("strictQuery", false);
 
 // Define the database URL to connect to.
-const mongoDB = "mongodb+srv://heresywolves:mACSNDL7e3BRZGTO@cluster0.avuxlqr.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0";
+const mongoDB = "mongodb+srv://heresywolves:mACSNDL7e3BRZGTO@cluster0.avuxlqr.mongodb.net/store?retryWrites=true&w=majority&appName=Cluster0";
 
 // Wait for database to connect, logging an error if there is a problem
 main().catch((err) => console.log(err));
@@ -18,9 +18,12 @@ async function main() {
 }
 
 var indexRouter = require('./routes/index');
-var usersRouter = require('./routes/users');
+var gamesRouter = require('./routes/games');
 
 var app = express();
+
+// Serve static files from the 'public' directory
+app.use(express.static(path.join(__dirname, 'public')));
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -33,7 +36,7 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
-app.use('/users', usersRouter);
+app.use('/games', gamesRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
