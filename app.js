@@ -9,6 +9,7 @@ const mongoose = require("mongoose");
 mongoose.set("strictQuery", false);
 
 // Define the database URL to connect to.
+// const mongoDB = "mongodb+srv://heresywolves:mACSNDL7e3BRZGTO@cluster0.avuxlqr.mongodb.net/store?retryWrites=true&w=majority&appName=Cluster0";
 const mongoDB = "mongodb+srv://heresywolves:mACSNDL7e3BRZGTO@cluster0.avuxlqr.mongodb.net/store?retryWrites=true&w=majority&appName=Cluster0";
 
 // Wait for database to connect, logging an error if there is a problem
@@ -19,6 +20,7 @@ async function main() {
 
 var indexRouter = require('./routes/index');
 var gamesRouter = require('./routes/games');
+var categoriesRouter = require('./routes/categories');
 
 var app = express();
 
@@ -37,6 +39,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
 app.use('/games', gamesRouter);
+app.use('/categories', categoriesRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

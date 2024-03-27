@@ -65,10 +65,28 @@ async function studioCreate(index, name, about) {
 async function createCategories() {
   console.log("Adding categories");
   await Promise.all([
-    categoryCreate(0, "Third-person shooter"),
-    categoryCreate(1, "Mecha"),
-    categoryCreate(2, "Survival"),
-    categoryCreate(3, "Horror"),
+    categoryCreate(0, 
+      "Third-person shooter",
+      `Third-person shooter (TPS) is a subgenre of 3D shooter games in which the gameplay consists primarily of shooting. It is closely related to first-person shooters, but with the player character visible on-screen during play. While 2D shoot 'em up games also employ a third-person perspective, the TPS genre is distinguished by having the game presented with the player's avatar as a primary focus of the camera's view. 
+    `),
+    categoryCreate(1, 
+      "Mecha",
+      `In science fiction, mecha (Japanese: メカ, Hepburn: meka) or mechs are giant robots or machines typically depicted as piloted and as humanoid walking vehicles. The term was first used in Japanese after shortening the English loanword 'mechanism' (メカニズム, mekanizumu) or 'mechanical' (メカニカル, mekanikaru), but the meaning in Japanese is more inclusive, and 'robot' (ロボット, robotto) or 'giant robot' is the narrower term.
+
+      Fictional mecha vary greatly in size and shape, but are distinguished from vehicles by their humanoid or biomorphic appearance, although they are bigger, often much bigger, than human beings. Different subgenres exist, with varying connotations of realism. The concept of Super Robot and Real Robot are two such examples found in Japanese anime and manga.
+      
+      Real-world piloted humanoid or non-humanoid robotic platforms, existing or planned, may also be called "mecha". In Japanese, "mecha" may refer to mobile machinery or vehicles (including aircraft) in general, piloted or otherwise. `
+    ),
+    categoryCreate(2, 
+      "Survival",
+      `Survival games are a subgenre of action games which are often set in hostile, intense, open-world environments. Players generally start with minimal equipment and are required to survive as long as possible by finding the resources necessary to manage hunger, thirst, disease and/or mental state. Many survival games are based on randomly or procedurally generated persistent environments; more recently, survival games are often playable online, allowing players to interact in a single world. Survival games are generally open-ended with no set goals and often closely related to the survival horror genre, where the player must survive within a supernatural setting, such as a zombie apocalypse. `  
+    ),
+    categoryCreate(3, 
+      "Horror",
+      `A horror game is a video game genre centered on horror fiction and typically designed to scare the player. The term may also be used to describe tabletop games with horror fiction elements.
+
+      Unlike most other video game genres, which are classified by their gameplay, horror games are nearly always based on narrative or visual presentation, and use a variety of gameplay types.`
+    ),
   ]);
 }
 
@@ -98,7 +116,7 @@ async function createGames() {
       50,
       59.99,
       0,
-      "/images/lethal_company.jpg"
+      "/images/armored_core4.webp"
     ),
     gameCreate(1,
       "Lethal Company",
@@ -109,7 +127,7 @@ async function createGames() {
       267,
       9.99,
       0,
-      "/images/armored_core4.webp"
+      "/images/lethal_company.jpg"
     ),
   ]);
 }
