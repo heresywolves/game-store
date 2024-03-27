@@ -43,8 +43,8 @@ async function categoryCreate(index, name, description) {
   console.log(`Added category: ${name}`);
 }
 
-async function gameCreate(index, title, studio, release_date, summary, category, quantity, price, sale_percent) {
-  const gameDetails= { title, studio, release_date, summary, category, quantity, price, sale_percent};
+async function gameCreate(index, title, studio, release_date, summary, category, quantity, price, sale_percent, img_path) {
+  const gameDetails= { title, studio, release_date, summary, category, quantity, price, sale_percent, img_path};
 
   const game = new Game(gameDetails);
 
@@ -97,7 +97,8 @@ async function createGames() {
       [categories[0], categories[1]],
       50,
       59.99,
-      0
+      0,
+      "../public/images/lethal_company.jpg"
     ),
     gameCreate(1,
       "Lethal Company",
@@ -107,7 +108,8 @@ async function createGames() {
       [categories[2], categories[3]],
       267,
       9.99,
-      0
+      0,
+      "../public/images/armored_core4.webp"
     ),
   ]);
 }
