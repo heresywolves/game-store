@@ -1,0 +1,27 @@
+extends layout
+
+block content
+  if game
+    img(src=game.img_path, alt="")
+    h1= game.title 
+    h5 Studio:
+    a(href=game.studio.url) #{game.studio.name} 
+    h5 Release Date:
+    p= game.release_date
+    ul
+      each category in game.category
+        li 
+          a(href=category.url) #{category.name} 
+    h5 Synopsis: 
+    p= game.summary
+    h5 Price: 
+    p= game.price
+    if game.quantity > 0
+      p In stock
+    else 
+      p Out of stock
+  else 
+    p Game not found 
+
+
+
