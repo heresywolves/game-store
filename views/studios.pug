@@ -1,0 +1,12 @@
+extends layout
+
+block content
+  h1= title 
+  if studios.length 
+    each studio in studios 
+      div
+        a(href=studio.url) #{studio.name}
+        p= studio.about
+
+
+

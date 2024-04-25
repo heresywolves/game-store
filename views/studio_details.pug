@@ -1,9 +1,9 @@
 extends layout
 
 block content
-  if category 
-    h1= category.name
-    p= category.description
+  if studio
+    h1= studio.name
+    p= studio.about
     if games.length
       ul
         each game in games 
@@ -11,9 +11,12 @@ block content
             a(href=game.url) #{game.title} 
             img(src=game.img_path, alt="game cover")
             p $ #{game.price} 
+    else 
+      p There are no games for this studio
 
   else 
-    p Category not found 
+    p Studio not found 
+
 
 
 
