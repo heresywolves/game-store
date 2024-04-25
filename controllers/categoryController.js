@@ -1,4 +1,5 @@
 const Category = require('../models/category');
+const Game = require("../models/game");
 const asyncHandler = require('express-async-handler');
 const { body, validationResult } = require('express-validator');
 
@@ -13,5 +14,30 @@ exports.category_list_get = asyncHandler(async (req, res, next) => {
   res.render("categories", {
     title: "Categories",
     categories
+  })
+})
+
+
+// GET category details on /categories/id
+exports.category_details_get =  asyncHandler(async (req, res, next) => {
+  const category = await Category.findById(req.params.id)
+  .exec()
+  .catch(() => {
+    const err = new Error("Category not found");
+    err.status = 404;
+    return next(err);
+  });
+
+  if (category === null) {
+    // No results.
+    const err = new Error("Category not found");
+    err.status = 404;
+    return next(err);
+  }
+
+  const games = await Game.find({category : { $in: [category._id]}});
+
+  res.render("category_details", {
+    category, games
   })
 })

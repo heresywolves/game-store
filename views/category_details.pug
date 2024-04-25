@@ -1,0 +1,19 @@
+extends layout
+
+block content
+  if category 
+    h1= category.name
+    p= category.description
+    if games
+      ul
+        each game in games 
+          li 
+            a(href=game.url) #{game.title} 
+            img(src=game.img_path, alt="game cover")
+            p $ #{game.price} 
+
+  else 
+    p Category not found 
+
+
+
