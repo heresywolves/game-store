@@ -2,24 +2,33 @@ extends layout
 
 block content
   if game
-    img(src=game.img_path, alt="")
-    h1= game.title 
-    h5 Studio:
-    a(href=game.studio.url) #{game.studio.name} 
-    h5 Release Date:
-    p= game.release_date
-    ul
-      each category in game.category
-        li 
-          a(href=category.url) #{category.name} 
-    h5 Synopsis: 
-    p= game.summary
-    h5 Price: 
-    p= game.price
-    if game.quantity > 0
-      p In stock
-    else 
-      p Out of stock
+    .game-details-container
+      h1= game.title 
+      img(src=game.img_path, alt="")
+      .studio
+        h5 Studio:
+        a(href=game.studio.url) #{game.studio.name} 
+      .release-date
+        h5 Release Date:
+        p= date 
+      .categories
+        h5 Category:
+        ul
+          each category in game.category
+            li 
+              a(href=category.url) #{category.name} 
+      .price
+        h5 Price: 
+        p $#{game.price}
+        if game.quantity > 0
+          p In stock
+        else 
+          p Out of stock
+      if game.quantity > 0
+        button.btn Order now
+      .synopsis
+        h5 Synopsis: 
+        p= game.summary
   else 
     p Game not found 
 

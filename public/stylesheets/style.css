@@ -158,3 +158,83 @@ p {
   margin-top: 10px;
   font-size: 1rem;
 }
+
+.game-details-container {
+  display: grid;
+  padding-top: 80px;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  max-width: 800px;
+  margin: 0 auto;
+  text-align: center;
+  padding-bottom: 100px;
+}
+
+.game-details-container a {
+  color: rgb(0, 17, 255);
+}
+
+.game-details-container h1 {
+  grid-column: 1 / 5;
+}
+
+.game-details-container img {
+  width: 300px;
+  grid-column: 1 / 5;
+  justify-self: center;
+}
+
+.game-details-container .synopsis {
+  grid-column: 1 / 5;
+  padding: 0 50px;
+  text-align: start;
+}
+
+.game-details-container .synopsis h5 {
+  text-align: center;
+}
+
+.game-details-container .synopsis p {
+  font-size: 1rem;
+  position: relative;
+  /* border-left: 4px solid black; */
+}
+
+.game-details-container .synopsis p:before {
+  display: block;
+  position: absolute;
+  content: "";
+  width: 4px;
+  height: 100%;
+  left: -14px;
+  background-color: rgb(62, 62, 62);
+}
+
+.game-details-container .release-date p {
+  font-size: 14px;
+  margin: 0;
+}
+
+.game-details-container .price p {
+  margin: 0;
+  position: relative;
+  bottom: 5px;
+  
+}
+
+.game-details-container .price p:last-child {
+  font-size: 14px;
+}
+
+.game-details-container .btn {
+  grid-column: 2 / 4;
+  font-size: 1rem;
+  margin: 15px 0;
+  border: none;
+  border-radius: 30px;
+  background-color: greenyellow;
+}
+
+.game-details-container .btn:hover {
+  background-color: rgb(165, 249, 38);
+}
+

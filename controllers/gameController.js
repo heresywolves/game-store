@@ -37,7 +37,13 @@ exports.game_details_get =  asyncHandler(async (req, res, next) => {
     return next(err);
   }
 
+  let date = formatDate(game.release_date.toString());
+
   res.render("game_details", {
-    game
+    game, date
   })
 })
+
+function formatDate (date) {
+  return date.split(' ').splice(1, 3).join(' ');
+}
