@@ -2,7 +2,7 @@
 
 body {
   padding: 0px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  font: 12px "Lucida Grande", Helvetica, Arial, sans-serif;
   margin: 0;
   background-color: rgb(247, 247, 247);
   color: rgb(46, 46, 46);
@@ -22,7 +22,7 @@ a:hover {
 .btn {
   display: block;
   width: 100%;
-  padding: 1rem 0;
+  padding: 1em 0;
   cursor: pointer;
   font-weight: 900;
   -webkit-user-select: none;
@@ -86,7 +86,7 @@ header img {
   gap: 20px;
   padding: 100px;
   padding-top: 200px;
-  max-width: 1600px;
+  max-width: 800px;
   margin-left: auto;
   margin-right: auto;
 }
@@ -97,7 +97,7 @@ header img {
 }
 
 h1 {
-  font-size: 4rem;
+  font-size: 2rem;
 }
 
 p {
@@ -247,7 +247,7 @@ p {
 
 .categories-page-container a {
   display: block;
-  font-size: 2rem;
+  font-size: 1.5rem;
   color: rgb(0, 17, 255);
   margin-top: 20px;
 }
