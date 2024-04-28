@@ -1,21 +1,23 @@
 extends layout
 
 block content
-  if studio
-    h1= studio.name
-    p= studio.about
-    if games.length
-      ul
-        each game in games 
-          li 
-            a(href=game.url) #{game.title} 
-            img(src=game.img_path, alt="game cover")
-            p $ #{game.price} 
+  .studio-details-container
+    if studio
+      h1= studio.name
+      p= studio.about
+      .games-container
+        if games.length 
+          ul 
+            each game in games
+              li
+                a(href=game.url) 
+                  img(src=`${game.img_path}`)
+                  p(href=game.url class="title") #{game.title}
+                  p(class="studio") (#{game.studio.name})
+        else 
+          p There are no games for this studio
     else 
-      p There are no games for this studio
-
-  else 
-    p Studio not found 
+      p Studio not found 
 
 
 

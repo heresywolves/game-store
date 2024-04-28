@@ -33,7 +33,14 @@ exports.studio_details_get =  asyncHandler(async (req, res, next) => {
     return next(err);
   }
 
-  const games = await Game.find({studio: studio._id});
+  const games = await Game.find({studio: studio._id})
+  .populate('studio')
+  .exec()
+  .catch(() => {
+    const err = new Error("Games not found");
+    err.status = 404;
+    return next(err);
+  });
 
   res.render("studio_details", {
     studio, games

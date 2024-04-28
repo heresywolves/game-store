@@ -299,5 +299,15 @@ p {
   font-size: 0.9rem;
 }
 
+.studio-details-container {
+  padding: 80px 0 100px 0;
+  text-align: center;
+  width: 800px;
+  margin: 0 auto;
+}
+
+.studio-details-container .games-container {
+  margin-top: 40px;
+}
 
 
