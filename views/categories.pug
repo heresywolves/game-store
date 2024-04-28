@@ -1,11 +1,12 @@
 extends layout
 
 block content
-  h1= title 
-  if categories.length 
-    each category in categories 
-      div
-        a(href=category.url) #{category.name}
-        p= category.description
+  .categories-page-container
+    h1= title 
+    if categories.length 
+      each category in categories 
+        div
+          a(href=category.url) #{category.name}
+          p= category.description
 
 
