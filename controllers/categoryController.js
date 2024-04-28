@@ -3,7 +3,6 @@ const Game = require("../models/game");
 const asyncHandler = require('express-async-handler');
 const { body, validationResult } = require('express-validator');
 
-
 // GET all categories
 
 exports.category_list_get = asyncHandler(async (req, res, next) => {

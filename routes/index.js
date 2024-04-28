@@ -3,7 +3,7 @@ var router = express.Router();
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-  res.render('index', { title: 'Welcome to Game Nexus' });
+  res.render('index', { title: 'Game Nexus Inventory Manager' });
 });
 
 module.exports = router;
