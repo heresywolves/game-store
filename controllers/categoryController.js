@@ -35,7 +35,14 @@ exports.category_details_get =  asyncHandler(async (req, res, next) => {
     return next(err);
   }
 
-  const games = await Game.find({category : { $in: [category._id]}});
+  const games = await Game.find({category : { $in: [category._id]}})
+  .populate('studio')
+  .exec()
+  .catch(() => {
+    const err = new Error("Games not found");
+    err.status = 404;
+    return next(err);
+  });
 
   res.render("category_details", {
     category, games

@@ -1,19 +1,21 @@
 extends layout
 
 block content
-  if category 
-    h1= category.name
-    p= category.description
-    if games.length
-      ul
-        each game in games 
-          li 
-            a(href=game.url) #{game.title} 
-            img(src=game.img_path, alt="game cover")
-            p $ #{game.price} 
-
-  else 
-    p Category not found 
+  .category-details-container
+    if category 
+      h1= category.name
+      p= category.description
+      .games-container
+        if games.length 
+                ul 
+                  each game in games
+                    li
+                      a(href=game.url) 
+                        img(src=`${game.img_path}`)
+                        p(href=game.url class="title") #{game.title}
+                        p(class="studio") (#{game.studio.name})
+    else 
+      p Category not found 
 
 
 
