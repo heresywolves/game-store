@@ -66,7 +66,7 @@ header nav ul {
   font-size: 1.5rem;
   text-transform: uppercase;
   position: relative;
-  top: 3px;
+  bottom: 1px;
 }
 
 header img {
@@ -92,11 +92,11 @@ header img {
   flex: 1;
 }
 
-.main-page-container h1 {
+h1 {
   font-size: 4rem;
 }
 
-.main-page-container p {
+p {
   margin-bottom: 0;
   margin-top: 26px;
   font-size: 1.4rem;
@@ -110,4 +110,51 @@ header img {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+}
+
+.games-page-container {
+  padding-top: 80px;
+  text-align: center;
+}
+
+.games-container ul {
+  width: min-content;
+  display: grid;
+  grid-template-columns: repeat(4, 200px);
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.games-container li a {
+  display: block;
+  text-decoration: none;
+  height: 100%;
+  transition: 0.2s ease;
+}
+
+.games-container li a:hover {
+  transform: scale(1.05);
+}
+
+.games-container li img {
+  width: 100%;
+}
+
+.games-container li {
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+  cursor: pointer;
+}
+
+.games-container li .title {
+  margin-top: auto;
+  font-size: 1.4rem;
+  padding-top: 10px;
+  font-weight: 500;
+}
+
+.games-container li .studio {
+  margin-top: 10px;
+  font-size: 1rem;
 }

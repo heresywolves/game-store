@@ -1,12 +1,15 @@
 extends layout
 
 block content
-  h1= title 
-  if games.length 
-    ul 
-      each game in games
-        li
-          img(src=`${game.img_path}`)
-          a(href=game.url) #{game.title}
-          | (#{game.studio.name})
+  .games-page-container 
+    h1= title 
+    .games-container
+      if games.length 
+        ul 
+          each game in games
+            li
+              a(href=game.url) 
+                img(src=`${game.img_path}`)
+                p(href=game.url class="title") #{game.title}
+                p(class="studio") (#{game.studio.name})
 
