@@ -48,34 +48,38 @@ ul {
   margin: 0;
 }
 
-header {
+/* HEADER */
+
+.header {
   position: fixed;
   width: 100vw;
   background-color: white;
   top: 0;
 }
 
-header nav {
+.header__container {
   display: flex;
   justify-content: center;
   align-items: center;
   gap: 40px;
 }
 
-header nav ul {
+.header__links {
   display: flex;
   justify-content: space-between;
   align-items: center;
   gap: 40px;
-  font-size: 1.5rem;
+  font-size: 1.1rem;
   text-transform: uppercase;
   position: relative;
   bottom: 1px;
 }
 
-header img {
-  height: 80px;
+.header__logo {
+  height: 60px;
 }
+
+/* MAIN INDEX PAGE */
 
 .main-page-logo {
   width: 100%;
@@ -249,13 +253,6 @@ p {
 
 .categories-page-container h1 {
   text-align: center;
-}
-
-.categories-page-container a {
-  display: block;
-  font-size: 1.5rem;
-  color: rgb(0, 17, 255);
-  margin-top: 20px;
 }
 
 .categories-page-container p {
