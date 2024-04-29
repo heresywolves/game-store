@@ -3,7 +3,7 @@ extends layout
 block content
   .categories-page-container
     h1= title 
-    button.btn + Add new category
+    a(href="/categories/new_category" class="btn") + Add new category 
     if categories.length 
       each category in categories 
         div

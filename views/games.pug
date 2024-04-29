@@ -10,7 +10,8 @@ block content
           each game in games
             li
               a(href=game.url) 
-                img(src=`${game.img_path}`)
+                div.img-container
+                  img(src=`${game.img_path}`)
                 p(href=game.url class="title") #{game.title}
                 p(class="studio") (#{game.studio.name})
 

@@ -47,3 +47,9 @@ exports.category_details_get =  asyncHandler(async (req, res, next) => {
     category, games
   })
 })
+
+
+// GET category details on /categories/id
+exports.category_add_get =  asyncHandler(async (req, res, next) => {
+  res.render("category_add_new");
+});
