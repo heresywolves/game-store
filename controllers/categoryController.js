@@ -49,7 +49,43 @@ exports.category_details_get =  asyncHandler(async (req, res, next) => {
 })
 
 
-// GET category details on /categories/id
+// GET category create form
 exports.category_add_get =  asyncHandler(async (req, res, next) => {
-  res.render("category_add_new");
+  res.render("category_form", {title: "Create new Category"});
 });
+
+// POST category create from
+exports.category_add_post = [
+  // Validate and sanitize
+  body("name", "Category name must have at least 3 characters")
+  .trim()
+  .isLength({min: 3})
+  .escape(),
+
+  // Process the request
+  asyncHandler(async (req, res, next) => {
+    const errors = validationResult(req);
+
+    const category = new Category({
+       name: req.body.name,
+       description: req.body.description ? req.body.description : ""
+    })
+
+    if (!errors.isEmpty()) {
+      res.render("category_form", {
+        title: "Create new Category",
+        errors: errors.array(),
+      })
+      return;
+    } else {
+      // Data is valid
+      const categoryExists = await Category.findOne({name: req.body.name}).exec();
+      if (categoryExists) {
+        res.redirect(categoryExists.url);
+      } else {
+        await category.save();
+        res.redirect(category.url);
+      }
+    }
+  })
+]

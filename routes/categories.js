@@ -7,9 +7,13 @@ const categoryController = require('../controllers/categoryController');
 router.get('/', categoryController.category_list_get);
 
 // GET category add new
-router.get('/new_category', categoryController.category_add_get);
+router.get('/create', categoryController.category_add_get);
+
+// POST category add new
+router.post('/create', categoryController.category_add_post);
 
 // GET category details
 router.get('/:id', categoryController.category_details_get);
+
 
 module.exports = router;
