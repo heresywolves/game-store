@@ -1,15 +1,14 @@
 extends layout
 
 block content
-  .studios-page-container
-    h1 Studios 
+  .studios-page
+    h1.studios-page__heading Studios 
     a(class="btn" href="studios/create") + Add new studio
-    .studios-container
+    .block-links
       if studios.length 
         each studio in studios 
-          div
-            a(href=studio.url) #{studio.name}
-            p= studio.about
+          a(class="block-links__link" href=studio.url)
+            p.block-links__name #{studio.name}
 
 
 

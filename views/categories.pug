@@ -4,10 +4,10 @@ block content
   .categories
     h1.categories__heading #{title}
     a(href="/categories/create" class="btn") + Add new category 
-    .categories__links-container
+    .block-links
       if categories.length 
         each category in categories 
-          div.categories__link-wrapper
-            a(href=category.url class="categories__link") #{category.name}
+          a(href=category.url class="block-links__link") 
+            p.block-links__name #{category.name}
 
 
