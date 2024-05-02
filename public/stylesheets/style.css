@@ -258,20 +258,40 @@ ul {
 
 /* CATEGORIES */
 
-.categories-page-container {
+.categories {
   padding: 80px 0 100px 0;
   max-width: 800px;
   margin: 0 auto;
 }
 
-.categories-page-container h1 {
+.categories__links-container {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 10px;
+}
+
+.categories__heading {
   text-align: center;
 }
 
-.categories-page-container p {
-  margin: 0;
+.categories__link {
+  color: rgb(0, 17, 255);
+  text-align: center;
   font-size: 1rem;
 }
+
+.categories__link-wrapper {
+  max-width: 100%;
+  height: 100px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+  /* background-color: white; */
+  border: 1px solid black;
+}
+
+/* CATEGORY DETAILS */
 
 .category-details-container {
   padding: 80px 0 100px 0;

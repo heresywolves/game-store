@@ -1,13 +1,13 @@
 extends layout
 
 block content
-  .categories-page-container
-    h1= title 
+  .categories
+    h1.categories__heading #{title}
     a(href="/categories/create" class="btn") + Add new category 
-    if categories.length 
-      each category in categories 
-        div
-          a(href=category.url) #{category.name}
-          p= category.description
+    .categories__links-container
+      if categories.length 
+        each category in categories 
+          div.categories__link-wrapper
+            a(href=category.url class="categories__link") #{category.name}
 
 
