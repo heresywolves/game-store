@@ -3,7 +3,7 @@ extends layout
 block content
   .studios-page-container
     h1 Studios 
-    a.btn + Add new studio
+    a(class="btn" href="studios/create") + Add new studio
     .studios-container
       if studios.length 
         each studio in studios 

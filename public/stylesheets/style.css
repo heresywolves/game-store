@@ -19,19 +19,28 @@ a:hover {
   text-decoration: underline;
 }
 
+h1 {
+  font-size: 2rem;
+}
+
+p {
+  margin-bottom: 0;
+  margin-top: 26px;
+  font-size: 1.4rem;
+}
+
 .btn {
   display: block;
-  width: 100%;
-  padding: 1em 0;
+  width: 40%;
+  padding: 10px 0;
   cursor: pointer;
-  font-weight: 900;
   -webkit-user-select: none;
   user-select: none;
   text-align: center;
   font-size: 1rem;
-  margin: 30px 0;
-  border: solid 4px rgb(42, 42, 42);
-  border-radius: 30px;
+  margin: 30px auto;
+  border: solid 2px rgb(42, 42, 42);
+  border-radius: 5px;
   background: none;
   color: rgb(42, 42, 42);
 }
@@ -81,11 +90,11 @@ ul {
 
 /* MAIN INDEX PAGE */
 
-.main-page-logo {
+.main-page__logo {
   width: 100%;
 }
 
-.main-page-container {
+.main-page {
   display: flex;
   gap: 20px;
   padding: 100px;
@@ -95,85 +104,86 @@ ul {
   margin-right: auto;
 }
 
-.main-page-container .left,
-.main-page-container .right {
+.main-page__left-side,
+.main-page__right-side {
   flex: 1;
 }
 
-h1 {
-  font-size: 2rem;
-}
 
-p {
-  margin-bottom: 0;
-  margin-top: 26px;
-  font-size: 1.4rem;
-}
-
-.main-page-container .left .btn {
+.main-page__left-side .btn {
   width: 82%;
 }
 
-.main-page-container .left {
+.main-page__left-side {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
 }
 
-.games-page-container {
+/* GAMES PAGE */
+
+.games-page {
   padding-top: 80px;
   text-align: center;
   max-width: 800px;
   margin: 0 auto;
 }
 
-.games-container ul {
+.games__list-container {
   width: min-content;
   display: grid;
-  grid-template-columns: repeat(4, 200px);
+  grid-template-columns: repeat(5, 130px);
+  gap: 20px;
   margin-left: auto;
   margin-right: auto;
 }
 
-.games-container li a {
+.games__game-container {
   display: block;
   text-decoration: none;
   height: 100%;
   transition: 0.2s ease;
 }
 
-.games-container .img-container {
-  height: 250px;
+.games__game-container,
+.games__img-container img,
+.games__img-container {
+  height: 200px;
 }
 
-.games-container li a:hover {
+.games__game-container:hover {
   transform: scale(1.05);
 }
 
-.games-container li img {
+.games__img-container img {
   width: 100%;
   height: 100%;
   object-fit: cover;
 }
 
-.games-container li {
+.games {
   display: flex;
   flex-direction: column;
   padding: 20px;
   cursor: pointer;
+  width: min-content;
+  margin:0 auto;
 }
 
-.games-container li .title {
+.games__title {
   margin-top: auto;
-  font-size: 1.4rem;
+  font-size: 1rem;
   padding-top: 10px;
   font-weight: 500;
 }
 
-.games-container li .studio {
+.games__studio {
   margin-top: 10px;
-  font-size: 1rem;
+  font-size: 0.8rem;
 }
+
+
+/* GAME DETAILS */
 
 .game-details-container {
   display: grid;

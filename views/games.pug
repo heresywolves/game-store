@@ -1,17 +1,17 @@
 extends layout
 
 block content
-  .games-page-container 
+  .games-page 
     h1= title 
     a.btn + Add new game
-    .games-container
+    .games
       if games.length 
-        ul 
+        ul.games__list-container
           each game in games
             li
-              a(href=game.url) 
-                div.img-container
+              a(href=game.url class="games__game-container") 
+                div.games__img-container
                   img(src=`${game.img_path}`)
-                p(href=game.url class="title") #{game.title}
-                p(class="studio") (#{game.studio.name})
+                p(href=game.url class="games__title") #{game.title}
+                p(class="games__studio") (#{game.studio.name})
 
