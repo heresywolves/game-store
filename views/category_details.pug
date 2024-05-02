@@ -1,22 +1,22 @@
 extends layout
 
 block content
-  .category-details-container
+  .category-details
     if category 
-      h1= category.name
+      h1.category-details__heading #{category.name}
       p= category.description
       a.btn + Add new game
       a.btn Edit category 
-      .games-container
+      .games
         if games.length 
-                ul 
-                  each game in games
-                    li
-                      a(href=game.url) 
-                        div.img-container
-                          img(src=`${game.img_path}`)
-                        p(href=game.url class="title") #{game.title}
-                        p(class="studio") (#{game.studio.name})
+          ul.games__list-container
+            each game in games
+              li
+                a(href=game.url) 
+                  div.games__img-container
+                    img(src=`${game.img_path}`)
+                  p(href=game.url class="games__title") #{game.title}
+                  p(class="games__studio") (#{game.studio.name})
     else 
       p Category not found 
 
