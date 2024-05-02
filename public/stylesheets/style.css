@@ -26,7 +26,7 @@ h1 {
 p {
   margin-bottom: 0;
   margin-top: 26px;
-  font-size: 1.4rem;
+  font-size: 1rem;
 }
 
 .btn {
@@ -153,6 +153,7 @@ ul {
 
 .games__game-container:hover {
   transform: scale(1.05);
+  text-decoration: none;
 }
 
 .games__img-container img {
@@ -321,12 +322,6 @@ ul {
 
 /* STUDIOS */
 
-.studios-page {
-  padding: 80px 0 100px 0;
-  width: 800px;
-  margin: 0 auto;
-}
-
 .studios {
   display: grid;
   grid-template-columns: repeat(5, 1fr);
@@ -355,15 +350,10 @@ ul {
 
 /* STUDIO DETAILS */
 
-.studio-details-container {
+.page-content {
   padding: 80px 0 100px 0;
   text-align: center;
   width: 800px;
   margin: 0 auto;
 }
-
-.studio-details-container .games-container {
-  margin-top: 40px;
-}
-
 

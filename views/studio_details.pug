@@ -1,20 +1,21 @@
 extends layout
 
 block content
-  .studio-details-container
+  .page-content
     if studio
       h1= studio.name
       p= studio.about
-      .games-container
+      a.btn + Add new game
+      .games
         if games.length 
-          ul 
+          ul.games__list-container
             each game in games
               li
-                a(href=game.url) 
-                  div.img-container
+                a(href=game.url class="games__game-container") 
+                  div.games__img-container
                     img(src=`${game.img_path}`)
-                  p(href=game.url class="title") #{game.title}
-                  p(class="studio") (#{game.studio.name})
+                  p(href=game.url class="games__title") #{game.title}
+                  p(class="games__studio") (#{game.studio.name})
         else 
           p There are no games for this studio
     else 
