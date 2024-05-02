@@ -11,6 +11,7 @@ exports.studios_list_get = asyncHandler(async (req, res, next) => {
   .exec();
 
   res.render("studios", {
+    title: "Studios",
     studios
   })
 })
@@ -87,3 +88,41 @@ exports.studio_add_post = [
     }
   })
 ]
+
+exports.studio_delete_get = asyncHandler(async (req, res, next) => {
+  const [studio, studioGames] = await Promise.all([
+    Studio.findById(req.params.id).exec(),
+    Game.find({ studio: req.params.id }, "title").exec(),
+  ]);
+
+  if (studio === null) {
+    const err = new Error("Studio not found");
+    err.status = 404;
+    return next(err);
+  }
+
+  res.render("studio_delete", {
+    title: "Delete Studio",
+    studio,
+    studioGames
+  })
+})
+
+exports.studio_delete_post = asyncHandler(async (req, res, next) => {
+  const [studio, studioGames] = await Promise.all([
+    Studio.findById(req.params.id).exec(),
+    Game.find({ studio: req.params.id }, "title").exec(),
+  ]);
+
+  if (studioGames.length > 0) {
+    res.render("studio_delete", {
+      title: "Delete Studio",
+      studio,
+      studioGames
+    });
+    return;
+  } else {
+    await Studio.findByIdAndDelete(req.body.studioid);
+    res.redirect("/studios")
+  }
+})

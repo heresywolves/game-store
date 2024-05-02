@@ -51,6 +51,11 @@ p {
   color: white;
 }
 
+.btn_delete:hover {
+  background-color: red;
+  color: black;
+}
+
 ul {
   list-style: none;
   padding: 0;
@@ -378,4 +383,10 @@ ul {
   font-size: 1rem;
   font-weight: 900;
   min-width: 400px;
+}
+
+/* DELETE PAGE */
+.delete-block a {
+  font-size: 1rem;
+  color: rgb(0, 17, 255);
 }

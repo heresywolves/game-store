@@ -12,6 +12,12 @@ router.get('/create', studioController.studio_add_get);
 // POST studio add new
 router.post('/create', studioController.studio_add_post);
 
+// GET studio delete 
+router.get('/:id/delete', studioController.studio_delete_get);
+
+// POST studio delete 
+router.post('/:id/delete', studioController.studio_delete_post);
+
 // GET studio details
 router.get('/:id', studioController.studio_details_get);
 

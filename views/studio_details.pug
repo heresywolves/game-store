@@ -6,6 +6,7 @@ block content
       h1= studio.name
       p= studio.about
       a.btn + Add new game
+      a(href=`${studio.url}/delete` class="btn btn_delete") Delete studio
       .games
         if games.length 
           ul.games__list-container
