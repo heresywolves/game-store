@@ -12,7 +12,7 @@ block content
         .form-group__input-wrapper
           label(for='name') Description:
           textarea#name.form-control(type='text' rows="10" name='description' required value=(undefined===category ? '' : category.description) )
-      a.btn(type='submit') Submit
+      button.btn(type='submit') Submit
 
     if errors
       ul

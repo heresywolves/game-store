@@ -169,6 +169,7 @@ ul {
   cursor: pointer;
   width: min-content;
   margin:0 auto;
+  min-width: 400px;
 }
 
 .games__title {
