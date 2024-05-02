@@ -3,22 +3,23 @@ extends layout
 block content
   script(scr="./orderPopup.js")
   if game
-    .game-details-container
-      h1= game.title 
-      img(src=game.img_path, alt="")
-      .studio
+    .game-details
+      h1(class="game-details__heading") #{game.title} 
+      a.btn Edit
+      img(src=game.img_path, alt="" class="game-details__image")
+      .game-details__studio
         h5 Studio:
         a(href=game.studio.url) #{game.studio.name} 
-      .release-date
+      .game-details__release-date
         h5 Release Date:
         p= date 
-      .categories
+      .game-details__categories
         h5 Category:
         ul
           each category in game.category
             li 
               a(href=category.url) #{category.name} 
-      .price
+      .game-details__price
         h5 Price: 
         p $#{game.price}
         if game.quantity > 0
@@ -26,10 +27,9 @@ block content
         else 
           p Out of stock
       if game.quantity > 0
-      .synopsis
-        h5 Synopsis: 
-        p= game.summary
-      a.btn Edit
+      .game-details__synopsis
+        h5.game-details__synopsis-heading Synopsis: 
+        p.game-details__synopsis-p #{game.summary}
   else 
     p Game not found 
 
