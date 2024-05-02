@@ -1,18 +1,20 @@
 extends layout
 
 block content
+  .page-content
+    h1 #{title}
 
-  h1 #{title}
+    form(method='POST')
+      div.form-group 
+        .form-group__input-wrapper
+          label(for='name') Category:
+          input#name.form-control(type='text', placeholder='Action, FPS etc.' name='name' required value=(undefined===category ? '' : category.name) )
+        .form-group__input-wrapper
+          label(for='name') Description:
+          textarea#name.form-control(type='text' rows="10" name='description' required value=(undefined===category ? '' : category.description) )
+      a.btn(type='submit') Submit
 
-  form(method='POST')
-    div.form-group
-      label(for='name') Category:
-      input#name.form-control(type='text', placeholder='Action, FPS etc.' name='name' required value=(undefined===category ? '' : category.name) )
-      label(for='name') Description:
-      textarea#name.form-control(type='text', name='description' required value=(undefined===category ? '' : category.description) )
-    a.btn(type='submit') Submit
-
-  if errors
-    ul
-      for error in errors
-        li!= error.msg
+    if errors
+      ul
+        for error in errors
+          li!= error.msg
