@@ -7,6 +7,7 @@ block content
       p= category.description
       a.btn + Add new game
       a.btn Edit category 
+      a(href=`${category.url}/delete` class="btn btn_delete") Delete category
       .games
         if games.length 
           ul.games__list-container

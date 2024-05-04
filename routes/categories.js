@@ -12,6 +12,12 @@ router.get('/create', categoryController.category_add_get);
 // POST category add new
 router.post('/create', categoryController.category_add_post);
 
+// GET category delete 
+router.get('/:id/delete', categoryController.category_delete_get);
+
+// POST category delete 
+router.post('/:id/delete', categoryController.category_delete_post);
+
 // GET category details
 router.get('/:id', categoryController.category_details_get);
 

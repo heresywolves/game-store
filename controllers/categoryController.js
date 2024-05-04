@@ -89,3 +89,41 @@ exports.category_add_post = [
     }
   })
 ]
+
+exports.category_delete_get = asyncHandler(async (req, res, next) => {
+  const [category, categoryGames] = await Promise.all([
+    Category.findById(req.params.id).exec(),
+    Game.find({ category: {$in: req.params.id} }, "title").exec(),
+  ]);
+
+  if (category === null) {
+    const err = new Error("Studio not found");
+    err.status = 404;
+    return next(err);
+  }
+
+  res.render("category_delete", {
+    title: "Delete Category",
+    category,
+    categoryGames
+  })
+})
+
+exports.category_delete_post = asyncHandler(async (req, res, next) => {
+  const [category, categoryGames] = await Promise.all([
+    Category.findById(req.params.id).exec(),
+    Game.find({ category: {$in: req.params.id} }, "title").exec(),
+  ]);
+
+  if (categoryGames.length > 0) {
+    res.render("category_delete", {
+      title: "Delete Category",
+      category,
+      categoryGames
+    });
+    return;
+  } else {
+    await Category.findByIdAndDelete(req.body.categoryid);
+    res.redirect("/categories")
+  }
+})
