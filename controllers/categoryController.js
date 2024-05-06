@@ -49,7 +49,7 @@ exports.category_details_get =  asyncHandler(async (req, res, next) => {
 })
 
 
-// GET category create form
+// GET category create for
 exports.category_add_get =  asyncHandler(async (req, res, next) => {
   res.render("category_form", {title: "Create new Category"});
 });

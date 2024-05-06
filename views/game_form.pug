@@ -1,0 +1,57 @@
+extends layout
+
+block content
+  .page-content
+    h1 #{title}
+
+    form(method='POST' enctype="multipart/form-data")
+      div.form-group 
+        .form-group__input-wrapper
+          label(for='name') Game Title:
+          input#name.form-control(type='text', placeholder='' name='name' required value=(undefined===game ? '' : game.title) )
+        .form-group__input-wrapper
+          label(for='studio') Studio:
+          select.form-control(name='studio' required)
+            option(value='') --Please select a studio--
+            for studio in studios
+              if game
+                if studio._id.toString() === game.studio._id.toString()
+                  option(value=studio._id selected) #{studio.name}
+                else 
+                  option(value=studio._id) #{studio.name}
+              else 
+                option(value=studio._id) #{studio.name}
+        .form-group__input-wrapper
+          label Category:
+          div 
+            for category in categories
+              div
+                if category.checked
+                  input.checkbox-input(type='checkbox' name='category' id=category._id value=category._id checked)
+                else
+                  input.checkbox-input(type='checkbox' name='category' id=category._id value=category._id)
+                label(for=category._id) &nbsp;#{category.name}
+        .form-group__input-wrapper
+          label(for='about') Summary:
+          textarea.form-control(type='text' rows="10" name='about' required value=(undefined===game ? '' : game.summary) )
+        .form-group__input-wrapper
+          label(for='release-date') Release-date:
+          input.form-control(type='date' name='release-date')
+        .form-group__input-wrapper
+          label(for='quantity') Quantity:
+          input.form-control(type='number' name='quantity')
+        .form-group__input-wrapper
+          label(for='price') Price:
+          input.form-control(type='number' name='price')
+        .form-group__input-wrapper
+          label(for='sale-percent') Price:
+          input.form-control(type='number' name='sale-percent')
+        .form-group__input-wrapper
+          label(for='photo') Image:
+          input.form-control(type='file' name='image')
+      button.btn(type='submit') Submit
+
+    if errors
+      ul
+        for error in errors
+          li!= error.msg

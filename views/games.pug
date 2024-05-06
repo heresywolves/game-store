@@ -3,7 +3,7 @@ extends layout
 block content
   .games-page 
     h1= title 
-    a.btn + Add new game
+    a(class="btn" href="/games/create") + Add new game
     .games
       if games.length 
         ul.games__list-container
