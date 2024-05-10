@@ -3,6 +3,7 @@ const Studio = require("../models/studio")
 const Category = require("../models/category")
 const asyncHandler = require("express-async-handler");
 const { body, validationResult } = require("express-validator");
+const fs = require('fs');
 
 // GET all games on /games
 exports.games_list_get =  asyncHandler(async (req, res, next) => {
@@ -154,39 +155,31 @@ exports.game_add_post = [
 ]
 
 exports.game_delete_get = asyncHandler(async (req, res, next) => {
-  const [category, categoryGames] = await Promise.all([
-    Category.findById(req.params.id).exec(),
-    Game.find({ category: {$in: req.params.id} }, "title").exec(),
-  ]);
+  const game = await Game.findById(req.params.id).exec();
 
-  if (category === null) {
-    const err = new Error("Studio not found");
+  if (game === null) {
+    const err = new Error("Game not found");
     err.status = 404;
     return next(err);
   }
 
-  res.render("category_delete", {
-    title: "Delete Category",
-    category,
-    categoryGames
+  res.render("game_delete", {
+    title: "Delete game",
+    game: game
   })
 })
 
 exports.game_delete_post = asyncHandler(async (req, res, next) => {
-  const [category, categoryGames] = await Promise.all([
-    Category.findById(req.params.id).exec(),
-    Game.find({ category: {$in: req.params.id} }, "title").exec(),
-  ]);
-
-  if (categoryGames.length > 0) {
-    res.render("category_delete", {
-      title: "Delete Category",
-      category,
-      categoryGames
-    });
-    return;
-  } else {
-    await Category.findByIdAndDelete(req.body.categoryid);
-    res.redirect("/categories")
+  // Remove images
+  const game = await Game.findById(req.body.gameid);
+  if (game) {
+    await Game.findByIdAndDelete(req.body.gameid);
+    fs.unlink('public' + game.img_path, (err) => {
+      if (err) {
+        console.log(err);
+      }
+    })
   }
+
+  res.redirect("/games")
 })

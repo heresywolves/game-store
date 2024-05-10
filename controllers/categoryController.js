@@ -97,7 +97,7 @@ exports.category_delete_get = asyncHandler(async (req, res, next) => {
   ]);
 
   if (category === null) {
-    const err = new Error("Studio not found");
+    const err = new Error("Category not found");
     err.status = 404;
     return next(err);
   }

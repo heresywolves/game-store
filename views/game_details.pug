@@ -6,6 +6,7 @@ block content
     .game-details
       h1(class="game-details__heading") #{game.title} 
       a.btn Edit
+      a(href=`${game.url}/delete` class="btn btn_delete") Delete Game 
       img(src=game.img_path, alt="" class="game-details__image")
       .game-details__studio
         h5 Studio:
