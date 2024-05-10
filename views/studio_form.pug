@@ -11,7 +11,7 @@ block content
           input#name.form-control(type='text', placeholder='' name='name' required value=(undefined===studio ? '' : studio.name) )
         .form-group__input-wrapper
           label(for='name') About:
-          textarea#name.form-control(type='text' rows="10" name='about' required value=(undefined===studio? '' : studio.description) )
+          textarea#name.form-control(type='text' rows="10" name='about' required ) #{undefined===studio ? '' : studio.about} 
       button.btn(type='submit') Submit
 
     if errors

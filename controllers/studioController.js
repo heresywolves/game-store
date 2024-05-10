@@ -126,3 +126,51 @@ exports.studio_delete_post = asyncHandler(async (req, res, next) => {
     res.redirect("/studios")
   }
 })
+
+// GET studio update form
+exports.studio_update_get =  asyncHandler(async (req, res, next) => {
+  const studio = await Studio.findById(req.params.id);
+
+  if (!studio) {
+    const err = new Error("Studio not found");
+    err.status = 404;
+    return next(err);
+  } else {
+    res.render("studio_form", {
+      title: "Edit Studio",
+      studio
+    });
+  }
+});
+
+// POST studio create from
+exports.studio_update_post = [
+  // Validate and sanitize
+  body("name", "Studio name must have at least 3 characters")
+  .trim()
+  .isLength({min: 3})
+  .escape(),
+
+  // Process the request
+  asyncHandler(async (req, res, next) => {
+    const errors = validationResult(req);
+
+    const studio = new Studio({
+      _id: req.params.id,
+       name: req.body.name,
+       about: req.body.about ? req.body.about : ""
+    })
+
+    if (!errors.isEmpty()) {
+      res.render("studio_form", {
+        title: "Create new studio",
+        errors: errors.array(),
+      })
+      return;
+    } else {
+      // Data is valid
+      const updatedStudio = await Studio.findByIdAndUpdate(req.params.id, studio, {});
+      res.redirect(updatedStudio.url);
+    }
+  })
+]

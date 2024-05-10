@@ -18,6 +18,12 @@ router.get('/:id/delete', studioController.studio_delete_get);
 // POST studio delete 
 router.post('/:id/delete', studioController.studio_delete_post);
 
+// GET studio update 
+router.get('/:id/update', studioController.studio_update_get);
+
+// POST studio update 
+router.post('/:id/update', studioController.studio_update_post);
+
 // GET studio details
 router.get('/:id', studioController.studio_details_get);
 
