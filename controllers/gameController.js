@@ -172,15 +172,18 @@ exports.game_delete_get = asyncHandler(async (req, res, next) => {
 })
 
 exports.game_delete_post = asyncHandler(async (req, res, next) => {
-  // Remove images
+  // Remove image
   const game = await Game.findById(req.body.gameid);
   if (game) {
+    console.log(game.img_path);
+    if (game.img_path !== "/images/default.webp") {
+      fs.unlink('public' + game.img_path, (err) => {
+        if (err) {
+          console.log(err);
+        }
+      })
+    }
     await Game.findByIdAndDelete(req.body.gameid);
-    fs.unlink('public' + game.img_path, (err) => {
-      if (err) {
-        console.log(err);
-      }
-    })
   }
 
   res.redirect("/games")
@@ -317,7 +320,7 @@ exports.game_update_post = [
       // Data is valid
       // Remove prev images
       // Delete only if it's not the default image
-      if (existingGame && existingGame.img_path !== "public/images/default.webp") {
+      if (existingGame && existingGame.img_path !== "/images/default.webp") {
         fs.unlink('public' + existingGame.img_path, (err) => {
           if (err) {
             console.log(err);
