@@ -5,7 +5,6 @@ block content
     if category 
       h1.category-details__heading #{category.name}
       p= category.description
-      //- a.btn + Add new game
       a(href=`${category.url}/update` class="btn") Edit category 
       a(href=`${category.url}/delete` class="btn btn_delete") Delete category
       .games
