@@ -29,6 +29,10 @@ p {
   font-size: 1rem;
 }
 
+textarea {
+  font-family: "Chakra Petch", sans-serif;;
+}
+
 .btn {
   display: block;
   width: 40%;
@@ -383,6 +387,22 @@ ul {
   font-size: 1rem;
   font-weight: 900;
   min-width: 400px;
+}
+
+.form-input__category label {
+  min-width: 200px;
+  max-width: 200px;
+  text-align: start;
+}
+
+.form-input__category {
+  display: flex;
+  justify-content: center;
+}
+
+.form-group__number input {
+  margin: 0 auto;
+  max-width: 60px;
 }
 
 /* DELETE PAGE */

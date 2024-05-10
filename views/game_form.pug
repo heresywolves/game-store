@@ -25,7 +25,7 @@ block content
           label Category:
           div 
             for category in categories
-              div
+              div.form-input__category
                 if category.checked
                   input.checkbox-input(type='checkbox' name='category' id=category._id value=category._id checked)
                 else
@@ -37,13 +37,13 @@ block content
         .form-group__input-wrapper
           label(for='releaseDate') Release-date:
           input.form-control(type='date' name='releaseDate' value=(undefined===game ? '' : formatedDate))
-        .form-group__input-wrapper
+        .form-group__input-wrapper.form-group__number
           label(for='quantity') Quantity:
           input.form-control(type='number' name='quantity' value=(undefined===game ? '' : game.quantity))
-        .form-group__input-wrapper
+        .form-group__input-wrapper.form-group__number
           label(for='price') Price:
           input.form-control(type='number' name='price' value=(undefined===game ? '' : game.price))
-        .form-group__input-wrapper
+        .form-group__input-wrapper.form-group__number
           label(for='salePercent') Sale Percent:
           input.form-control(type='number' name='salePercent' value=(undefined===game ? '' : game.sale_percent))
         .form-group__input-wrapper
