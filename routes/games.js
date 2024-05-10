@@ -20,6 +20,13 @@ router.get('/:id/delete', game_controller.game_delete_get);
 // POST games delete 
 router.post('/:id/delete', game_controller.game_delete_post);
 
+// GET games update
+router.get('/:id/update', game_controller.game_update_get);
+
+// POST games update 
+router.post('/:id/update', upload.single('image'), game_controller.game_update_post);
+
+
 /* GET game details. */
 router.get('/:id', game_controller.game_details_get );
 

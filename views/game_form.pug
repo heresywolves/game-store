@@ -33,22 +33,25 @@ block content
                 label(for=category._id) &nbsp;#{category.name}
         .form-group__input-wrapper
           label(for='about') Summary:
-          textarea.form-control(type='text' rows="10" name='summary' required value=(undefined===game ? '' : game.summary) )
+          textarea.form-control(type='text' rows="10" name='summary' required ) #{undefined===game ? '' : game.summary}
         .form-group__input-wrapper
           label(for='releaseDate') Release-date:
-          input.form-control(type='date' name='releaseDate')
+          input.form-control(type='date' name='releaseDate' value=(undefined===game ? '' : formatedDate))
         .form-group__input-wrapper
           label(for='quantity') Quantity:
-          input.form-control(type='number' name='quantity')
+          input.form-control(type='number' name='quantity' value=(undefined===game ? '' : game.quantity))
         .form-group__input-wrapper
           label(for='price') Price:
-          input.form-control(type='number' name='price')
+          input.form-control(type='number' name='price' value=(undefined===game ? '' : game.price))
         .form-group__input-wrapper
           label(for='salePercent') Sale Percent:
-          input.form-control(type='number' name='salePercent')
+          input.form-control(type='number' name='salePercent' value=(undefined===game ? '' : game.sale_percent))
         .form-group__input-wrapper
-          label(for='photo') Image:
-          input.form-control(type='file' name='image' required)
+          if undefined===game
+            label(for='photo') Image:
+          else 
+            label(for='photo') Update Image:
+          input.form-control(type='file' name='image')
       button.btn(type='submit') Submit
 
     if errors
