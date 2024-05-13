@@ -29,8 +29,9 @@ p {
   font-size: 1rem;
 }
 
-textarea {
-  font-family: "Chakra Petch", sans-serif;;
+textarea, input {
+  font-family: "Chakra Petch", sans-serif;
+  font-size: 0.9rem;
 }
 
 .btn {
