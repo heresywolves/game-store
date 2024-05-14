@@ -12,7 +12,7 @@ const mongoose = require("mongoose");
 mongoose.set("strictQuery", false);
 
 // Define the database URL to connect to.
-const mongoDB = process.env.DBLINK;
+const mongoDB = process.env.DB_LINK;
 
 cloudinary.config({ 
   cloud_name: process.env.CLOUD_NAME, 
