@@ -4,6 +4,7 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 var favicon = require('serve-favicon');
+const cloudinary = require('cloudinary').v2;
 
 
 // Connect mongodb
@@ -11,8 +12,19 @@ const mongoose = require("mongoose");
 mongoose.set("strictQuery", false);
 
 // Define the database URL to connect to.
-// const mongoDB = "mongodb+srv://heresywolves:mACSNDL7e3BRZGTO@cluster0.avuxlqr.mongodb.net/store?retryWrites=true&w=majority&appName=Cluster0";
-const mongoDB = process.env.dblink;
+const mongoDB = process.env.DBLINK;
+
+cloudinary.config({ 
+  cloud_name: process.env.CLOUD_NAME, 
+  api_key: process.env.CLOUD_KEY, 
+  api_secret: process.env.CLOUD_SECRET,
+});
+
+cloudinary.config({
+  secure: true
+});
+
+// console.log(cloudinary.config());
 
 
 // Wait for database to connect, logging an error if there is a problem

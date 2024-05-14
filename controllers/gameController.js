@@ -4,6 +4,7 @@ const Category = require("../models/category")
 const asyncHandler = require("express-async-handler");
 const { body, validationResult } = require("express-validator");
 const fs = require('fs');
+const cloudinary = require('cloudinary').v2;
 
 // GET all games on /games
 exports.games_list_get =  asyncHandler(async (req, res, next) => {
@@ -64,6 +65,26 @@ exports.game_add_get =  asyncHandler(async (req, res, next) => {
   });
 });
 
+const uploadImage = async (imagePath) => {
+
+  // Use the uploaded file's name as the asset's public ID and 
+  // allow overwriting the asset with new versions
+  const options = {
+    use_filename: true,
+    unique_filename: false,
+    overwrite: true,
+  };
+
+  try {
+    // Upload the image
+    const result = await cloudinary.uploader.upload(imagePath, options);
+    // console.log(result);
+    return result.secure_url;
+  } catch (error) {
+    console.error(error);
+  }
+};
+
 // POST game create from
 exports.game_add_post = [
   // Convert the categories to an array
@@ -116,7 +137,17 @@ exports.game_add_post = [
   asyncHandler(async (req, res, next) => {
     const errors = validationResult(req);
 
-    const fileName = req.file ? req.file.filename : 'default.webp'
+    let imgPath = '/images/default.webp';
+
+    if (req.file) {
+      imgPath = await uploadImage('./public/images/' + req.file.filename);
+      fs.unlink('public/images/' + req.file.filename, (err) => {
+        if (err) {
+          console.log(err);
+        }
+      })
+    }
+
 
     const game = new Game({
        title: req.body.title,
@@ -127,7 +158,7 @@ exports.game_add_post = [
        quantity: req.body.quantity,
        price: req.body.price,
        sale_percent: req.body.salePercent,
-       img_path: '/images/' + fileName
+       img_path: imgPath, 
     })
 
     const [allCategories, allStudios] = await Promise.all([
@@ -172,17 +203,8 @@ exports.game_delete_get = asyncHandler(async (req, res, next) => {
 })
 
 exports.game_delete_post = asyncHandler(async (req, res, next) => {
-  // Remove image
   const game = await Game.findById(req.body.gameid);
   if (game) {
-    console.log(game.img_path);
-    if (game.img_path !== "/images/default.webp") {
-      fs.unlink('public' + game.img_path, (err) => {
-        if (err) {
-          console.log(err);
-        }
-      })
-    }
     await Game.findByIdAndDelete(req.body.gameid);
   }
 
@@ -288,7 +310,19 @@ exports.game_update_post = [
 
     const existingGame = await Game.findById(req.params.id);
 
-    const filePath = req.file ? '/images/' + req.file.filename : existingGame.img_path;
+    let imgPath = '/images/default.webp';
+    if (existingGame) {
+      imgPath = existingGame.img_path;
+    }
+
+    if (req.file) {
+      imgPath = await uploadImage('./public/images/' + req.file.filename);
+      fs.unlink('public/images/' + req.file.filename, (err) => {
+        if (err) {
+          console.log(err);
+        }
+      })
+    }
 
     const game = new Game({
       _id: req.params.id,
@@ -300,7 +334,7 @@ exports.game_update_post = [
        quantity: req.body.quantity,
        price: req.body.price,
        sale_percent: req.body.salePercent,
-       img_path: filePath,
+       img_path: imgPath,
     })
 
     const [allCategories, allStudios] = await Promise.all([
@@ -318,15 +352,6 @@ exports.game_update_post = [
       return;
     } else {
       // Data is valid
-      // Remove prev images
-      // Delete only if it's not the default image
-      if (existingGame && existingGame.img_path !== "/images/default.webp") {
-        fs.unlink('public' + existingGame.img_path, (err) => {
-          if (err) {
-            console.log(err);
-          }
-        })
-      }
       const updatedGame = await Game.findByIdAndUpdate(req.params.id, game, {});
       res.redirect(updatedGame.url);
     }

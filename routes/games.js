@@ -5,6 +5,7 @@ const upload = multer({dest: 'public/images/'});
 
 const game_controller = require('../controllers/gameController');
 
+
 /* GET games listing. */
 router.get('/', game_controller.games_list_get );
 
